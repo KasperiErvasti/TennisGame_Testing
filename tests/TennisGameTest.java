@@ -127,6 +127,25 @@ public class TennisGameTest {
 	}
 	
 	@Test
+	public void testTennisGame_Player2WinsHardGame() throws TennisGameException{
+		TennisGame game = new TennisGame();
+		
+		game.player2Scored();
+		game.player2Scored();
+		game.player2Scored();
+		
+		game.player1Scored();
+		game.player1Scored();
+		game.player1Scored();
+		
+		game.player2Scored();
+		game.player2Scored();
+		
+		String score = game.getScore();
+		assertEquals("Incorrect winner", "player2 wins", score);
+	}
+	
+	@Test
 	public void testTennisGame_Player1HasAdvantage() throws TennisGameException{
 		TennisGame game = new TennisGame();
 		
@@ -180,6 +199,27 @@ public class TennisGameTest {
 		String score = game.getScore();
 		assertEquals("Incorrect advantage", "player2 has advantage", score);
 	}
+	
+	@Test
+	public void testTennisGame_Score15_30() throws TennisGameException{
+		TennisGame game = new TennisGame();
+		
+		game.player1Scored();
+		game.player1Scored();
+		
+		game.player2Scored();
+
+		String score = game.getScore();
+		assertEquals("Incorrect score", "15 - 30", score);
+		
+		game.player1Scored();
+		score = game.getScore();
+		assertEquals("Incorrect score", "15 - 40", score);
+		
+
+	}
+	
+	
 	
 	
 }
